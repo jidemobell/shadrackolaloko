@@ -112,7 +112,7 @@ export default function Music() {
         {/* Streaming Platforms Section */}
         <div>
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Stream Shadrack's Music
+            Stream Shadrack&apos;s Music
           </h3>
           
           <div className="bg-white rounded-2xl shadow-lg p-8">
