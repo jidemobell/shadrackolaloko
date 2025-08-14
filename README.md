@@ -1,6 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shadrack Olaloko - Artist Website
 
-## Getting Started
+A modern, clean website for Shadrack Olaloko, a Nigerian Yoruba Christian music artist based in Ireland.
+
+## About Shadrack Olaloko
+
+Shadrack Olaloko is a passionate Nigerian Yoruba Christian music artist who has made Ireland his home. With a heart full of faith and a voice that touches souls, Shadrack creates music that bridges cultures and brings people closer to God.
+
+## Website Features
+
+- **Modern Design**: Clean, uncluttered UI with responsive design
+- **Hero Section**: Professional landing area with artist photo placeholder
+- **About Section**: Detailed biography and mission statement  
+- **Music Section**: 
+  - YouTube video embeds (placeholders ready for real videos)
+  - Streaming platform links (Spotify, Apple Music, YouTube Music, SoundCloud)
+  - Musical style tags
+- **Shows Section**: 
+  - Upcoming performances in Dublin
+  - Downloadable event pamphlets
+  - Past performance history
+  - Booking information
+- **Contact Section**: 
+  - Contact form for inquiries
+  - Social media links
+  - Booking availability details
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Build Tool**: Turbopack (for development)
+- **Deployment Ready**: Static export capable
+
+## Development
 
 First, run the development server:
 
@@ -10,27 +43,63 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+└── components/
+    ├── About.tsx
+    ├── Contact.tsx
+    ├── Hero.tsx
+    ├── Music.tsx
+    ├── Navigation.tsx
+    └── Shows.tsx
+```
 
-## Learn More
+## Customization Notes
 
-To learn more about Next.js, take a look at the following resources:
+### Adding Real Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Photos**: Replace placeholder images in Hero and About sections
+2. **YouTube Videos**: Update video IDs in Music component
+3. **Shows**: Add real event data in Shows component
+4. **Contact Info**: Update email and phone number in Contact component
+5. **Social Links**: Add real social media URLs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Styling
 
-## Deploy on Vercel
+The website uses a blue and purple gradient theme with:
+- Primary: Blue (#3B82F6)
+- Secondary: Purple (#8B5CF6)
+- Background: Slate gray gradients
+- Clean typography with proper spacing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To build for production:
+
+```bash
+npm run build
+```
+
+To start production server:
+
+```bash
+npm start
+```
+
+## License
+
+This project is created for Shadrack Olaloko. All content and design are custom-made for his artistic ministry.
+
+---
+
+*Spreading God's love through music • Dublin, Ireland*
