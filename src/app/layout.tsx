@@ -21,10 +21,29 @@ export const metadata: Metadata = {
   keywords: ["Shadrack Olaloko", "Nigerian music", "Yoruba music", "Christian music", "Ireland", "Dublin", "worship music"],
   authors: [{ name: "Shadrack Olaloko" }],
   creator: "Shadrack Olaloko",
+  metadataBase: new URL('https://shadrackolaloko.pages.dev'), // Replace with your actual domain
   openGraph: {
     title: "Shadrack Olaloko - Nigerian Yoruba Christian Music Artist",
     description: "Nigerian Yoruba Christian music artist based in Ireland. Experience inspiring worship music and upcoming shows in Dublin.",
     type: "website",
+    locale: "en_IE",
+    siteName: "Shadrack Olaloko Official Website",
+    url: "https://shadrackolaloko.pages.dev", // Replace with your actual domain
+    images: [
+      {
+        url: "/opengraph-image", // Next.js will auto-generate this
+        width: 1200,
+        height: 630,
+        alt: "Shadrack Olaloko - Nigerian Yoruba Christian Music Artist",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shadrack Olaloko - Nigerian Yoruba Christian Music Artist",
+    description: "Nigerian Yoruba Christian music artist based in Ireland. Experience inspiring worship music and upcoming shows in Dublin.",
+    creator: "@shadrackolaloko", // Replace with actual Twitter handle if available
+    images: ["/twitter-image"], // Next.js will auto-generate this
   },
 };
 
