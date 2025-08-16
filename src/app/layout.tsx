@@ -22,6 +22,15 @@ export const metadata: Metadata = {
   authors: [{ name: "Shadrack Olaloko" }],
   creator: "Shadrack Olaloko",
   metadataBase: new URL('https://shadrackolaloko.pages.dev'), // Replace with your actual domain
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: "Shadrack Olaloko - Nigerian Yoruba Christian Music Artist",
     description: "Nigerian Yoruba Christian music artist based in Ireland. Experience inspiring worship music and upcoming shows in Dublin.",

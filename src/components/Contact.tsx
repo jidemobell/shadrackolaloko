@@ -69,7 +69,7 @@ export default function Contact() {
                 <input
                   type="tel"
                   className="w-full px-4 py-4 bg-white border border-gray-200 rounded-2xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-200 outline-none"
-                  placeholder="+353 XXX XXX XXX"
+                  placeholder="+353 89 951 4113"
                 />
               </div>
 
@@ -128,7 +128,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">Phone</p>
-                    <p className="text-gray-900 font-semibold">+353 XXX XXX XXX</p>
+                    <p className="text-gray-900 font-semibold">+353 89 951 4113</p>
                   </div>
                 </div>
 
@@ -153,12 +153,12 @@ export default function Contact() {
               
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { name: 'Facebook', icon: '📘', color: 'from-blue-500 to-blue-600' },
-                  { name: 'Instagram', icon: '📸', color: 'from-pink-500 to-purple-600' },
-                  { name: 'YouTube', icon: '▶️', color: 'from-red-500 to-red-600' },
-                  { name: 'WhatsApp', icon: '💬', color: 'from-green-500 to-emerald-600' },
+                  { name: 'Facebook', icon: '📘', color: 'from-blue-500 to-blue-600', href: '#' },
+                  { name: 'Instagram', icon: '📸', color: 'from-pink-500 to-purple-600', href: '#' },
+                  { name: 'YouTube', icon: '▶️', color: 'from-red-500 to-red-600', href: '#' },
+                  { name: 'WhatsApp', icon: '💬', color: 'from-green-500 to-emerald-600', href: 'https://wa.me/353899514113' },
                 ].map((social, index) => (
-                  <a key={index} href="#" className="group">
+                  <a key={index} href={social.href} className="group" target="_blank" rel="noopener noreferrer">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
                       <div className="flex items-center space-x-3">
                         <div className={`w-10 h-10 bg-gradient-to-r ${social.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
