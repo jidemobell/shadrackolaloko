@@ -4,6 +4,7 @@ import Music from "@/components/Music";
 import Shows from "@/components/Shows";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function Home() {
       <Music />
       <Shows />
       <Contact />
+      <Footer />
     </div>
   );
 }
