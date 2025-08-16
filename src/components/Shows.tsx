@@ -1,204 +1,173 @@
+import Image from 'next/image';
+
 export default function Shows() {
-  // Sample upcoming shows - replace with real data
   const upcomingShows = [
     {
-      date: "2024-09-15",
+      date: "Dec 15, 2024",
+      venue: "Dublin Community Church",
+      location: "Dublin, Ireland",
       time: "7:00 PM",
-      venue: "St. Patrick's Community Church",
-      location: "Dublin 2",
-      event: "Sunday Evening Worship",
-      description: "Join us for an evening of praise and worship",
-      ticketInfo: "Free Entry - All Welcome"
+      type: "Worship Service"
     },
     {
-      date: "2024-09-28",
+      date: "Dec 22, 2024",
+      venue: "Christ Embassy",
+      location: "Dublin, Ireland", 
       time: "6:30 PM",
-      venue: "Dublin Gospel Centre",
-      location: "Dublin 8",
-      event: "Faith & Music Night",
-      description: "Special worship concert with guest musicians",
-      ticketInfo: "€10 suggested donation"
+      type: "Christmas Special"
     },
     {
-      date: "2024-10-12",
-      time: "3:00 PM",
-      venue: "Nigerian Community Centre",
-      location: "Blanchardstown",
-      event: "Cultural Celebration",
-      description: "Celebrating Nigerian culture through music and worship",
-      ticketInfo: "€15 - Includes refreshments"
+      date: "Jan 5, 2025",
+      venue: "Redeemed Christian Church",
+      location: "Dublin, Ireland",
+      time: "11:00 AM",
+      type: "Sunday Service"
     }
   ];
-
-  const pastShows = [
-    {
-      date: "2024-08-10",
-      venue: "Christ Church Cathedral",
-      event: "Summer Concert Series"
-    },
-    {
-      date: "2024-07-20",
-      venue: "Temple Bar Community Centre",
-      event: "Music & Ministry Evening"
-    },
-    {
-      date: "2024-06-15",
-      venue: "Trinity College Chapel",
-      event: "Interfaith Worship Service"
-    }
-  ];
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-IE', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
 
   return (
-    <section id="shows" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Live Shows & Events
+    <section id="shows" className="py-32 bg-gradient-to-b from-white to-gray-50/50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center space-x-2 text-indigo-600 font-medium text-sm tracking-wide uppercase mb-4">
+            <div className="w-8 h-0.5 bg-indigo-600"></div>
+            <span>Shows</span>
+            <div className="w-8 h-0.5 bg-indigo-600"></div>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+            Upcoming <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Shows</span>
           </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Experience the joy of worship in person. Join Shadrack at upcoming shows across Dublin
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Join me for inspiring worship experiences across Dublin and Ireland
           </p>
         </div>
 
-        {/* Upcoming Shows */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">
-            Upcoming Performances
-          </h3>
-          
-          <div className="space-y-6">
-            {upcomingShows.map((show, index) => (
-              <div key={index} className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
-                      <div className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center min-w-fit">
-                        <div className="text-sm font-medium">{formatDate(show.date)}</div>
-                        <div className="text-lg font-bold">{show.time}</div>
-                      </div>
-                      
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 mb-1">
-                          {show.event}
-                        </h4>
-                        <p className="text-gray-600 flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          {show.venue}, {show.location}
-                        </p>
-                      </div>
+        {/* Shows Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {upcomingShows.map((show, index) => (
+            <div key={index} className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 relative overflow-hidden">
+                {/* Gradient overlay */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-medium">
+                      {show.type}
+                    </span>
+                    <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-lg">🎤</span>
                     </div>
-                    
-                    <p className="text-gray-700 mb-2">{show.description}</p>
-                    <p className="text-blue-600 font-medium">{show.ticketInfo}</p>
                   </div>
                   
-                  <div className="mt-4 lg:mt-0 lg:ml-6">
-                    <button className="w-full lg:w-auto bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                      Get Details
-                    </button>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                    {show.venue}
+                  </h3>
+                  <p className="text-gray-600 flex items-center mb-2">
+                    <span className="text-indigo-500 mr-2">📍</span>
+                    {show.location}
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">📅</span>
+                    <span className="font-semibold">{show.date}</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <span className="text-indigo-500 mr-3">⏰</span>
+                    <span className="font-semibold">{show.time}</span>
                   </div>
                 </div>
-                
-                {/* Pamphlet Download Placeholder */}
-                <div className="mt-4 pt-4 border-t border-blue-100">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Event pamphlet available:</span>
-                    <button className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
-                      Download PDF
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </button>
-                  </div>
+
+                <div className="flex space-x-3">
+                  <button className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                    Get Tickets
+                  </button>
+                  <button className="px-4 py-3 border border-gray-200 text-gray-600 rounded-xl hover:bg-gray-50 transition-colors">
+                    <span className="text-lg">ℹ️</span>
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Book Shadrack */}
-        <div className="mb-16">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white text-center">
-            <h3 className="text-2xl font-bold mb-4">Book Shadrack for Your Event</h3>
-            <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
-              Available for church services, community events, weddings, and special celebrations. 
-              Bringing inspiring worship music to your gathering.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#contact"
-                className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors"
-              >
-                Contact for Booking
-              </a>
-              <a 
-                href="tel:+353-XXX-XXXX"
-                className="bg-purple-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-800 transition-colors"
-              >
-                Call Now
-              </a>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Past Shows */}
-        <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">
-            Recent Performances
-          </h3>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pastShows.map((show, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow">
-                <div className="text-blue-600 text-sm font-medium mb-2">
-                  {formatDate(show.date)}
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-1">
-                  {show.event}
-                </h4>
-                <p className="text-gray-600 text-sm flex items-center">
-                  <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {show.venue}
+        {/* Performance Info */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">Live Worship Experience</h3>
+              <div className="space-y-4">
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Experience the power of live worship with heartfelt Yoruba Christian music 
+                  that brings communities together in praise and celebration.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Each performance is a unique spiritual journey, combining traditional 
+                  Nigerian worship with contemporary Christian music in an atmosphere of 
+                  faith and fellowship.
                 </p>
               </div>
-            ))}
+            </div>
+
+            {/* Performance Features */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                "Live Vocals",
+                "Traditional Music",
+                "Community Worship",
+                "Spiritual Ministry"
+              ].map((feature, index) => (
+                <div key={index} className="flex items-center space-x-3 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
+                  <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+                  <span className="text-gray-700 font-medium text-sm">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Visual Element */}
+          <div className="relative">
+            <div className="aspect-[4/5] bg-gradient-to-br from-indigo-100 via-white to-purple-100 rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+              <Image
+                src="/albumart4.jpeg"
+                alt="Shadrack Olaloko Live Performance"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+            
+            {/* Floating elements */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-3xl opacity-60 animate-pulse"></div>
+            <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-3xl opacity-40 animate-pulse delay-1000"></div>
+            
+            {/* Music notes */}
+            <div className="absolute top-10 -left-3 text-2xl text-indigo-400 animate-bounce">♪</div>
+            <div className="absolute bottom-20 -right-3 text-xl text-purple-400 animate-bounce delay-700">♫</div>
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-16 text-center bg-blue-50 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Stay Updated on Upcoming Shows
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Subscribe to receive notifications about new performances and events
-          </p>
-          <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-              Subscribe
-            </button>
+        {/* Booking CTA */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-12 shadow-2xl">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-5xl mb-6">🎵</div>
+              <h3 className="text-3xl font-bold text-white mb-4">Book Shadrack for Your Event</h3>
+              <p className="text-indigo-100 text-lg mb-8 leading-relaxed">
+                Bring inspiring worship music to your church, community event, or special celebration. 
+                Available for services, concerts, and private events across Dublin and Ireland.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="px-8 py-4 bg-white text-indigo-600 rounded-2xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                  Request Booking
+                </button>
+                <button className="px-8 py-4 border-2 border-white text-white rounded-2xl font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  View Availability
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

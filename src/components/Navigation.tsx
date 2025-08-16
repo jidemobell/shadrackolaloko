@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
     { href: "#home", label: "Home" },
@@ -13,25 +14,42 @@ export default function Navigation() {
     { href: "#contact", label: "Contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-gray-100/50' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo/Name */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+            <Link 
+              href="/" 
+              className="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors tracking-tight"
+            >
               Shadrack Olaloko
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="flex items-center space-x-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-indigo-600 px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full hover:bg-indigo-50"
                 >
                   {item.label}
                 </Link>
@@ -43,36 +61,40 @@ export default function Navigation() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
             >
-              <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                {isOpen ? (
-                  <path fillRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
-                ) : (
-                  <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
-                )}
-              </svg>
+              <div className="w-6 h-6 relative">
+                <span className={`absolute block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
+                  isOpen ? 'rotate-45 top-3' : 'top-1'
+                }`}></span>
+                <span className={`absolute block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
+                  isOpen ? 'opacity-0' : 'top-3'
+                }`}></span>
+                <span className={`absolute block h-0.5 w-6 bg-gray-700 transition-all duration-300 ${
+                  isOpen ? '-rotate-45 top-3' : 'top-5'
+                }`}></span>
+              </div>
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-600 hover:text-blue-600 block px-3 py-2 text-sm font-medium transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+          isOpen ? 'max-h-96 pb-6' : 'max-h-0'
+        }`}>
+          <div className="space-y-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block text-gray-700 hover:text-indigo-600 px-4 py-3 text-base font-medium transition-all rounded-lg hover:bg-indigo-50"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
